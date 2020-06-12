@@ -37,9 +37,9 @@ $year = date("Y");
             <li><a href="invoice.php?period=3" style="background:<?= ($period == 3) ? 'lightgreen' : 'white'; ?>">3(5-6)</a></li>
             <li><a href="invoice.php?period=4" style="background:<?= ($period == 4) ? 'lightgreen' : 'white'; ?>">4(7-8)</a></li>
             <li><a href="invoice.php?period=5" style="background:<?= ($period == 5) ? 'lightgreen' : 'white'; ?>">5(9-10)</a></li>
-            <li><a href="invoice.php?period=6" style="background:<?= ($period == 6) ? 'lightgreen' : 'white'; ?>">6(11,12)</a></li>
+            <li><a href="invoice.php?period=6" style="background:<?= ($period == 6) ? 'lightgreen' : 'white'; ?>">6(11-12)</a></li>
         </ul>
-        <a href="add_invoice.php"><button>新增獎號</button></a>
+        <a href="add_invoice.php"><button class="button button2">新增獎號</button></a>
         <?php
 
         $num1 = find('award_number', ['period' => $period, 'year' => $year, 'type' => 1]); //單筆
@@ -50,7 +50,7 @@ $year = date("Y");
         ?>
         <table class="invoice-table">
             <tr>
-                <th>年／月／份</th>
+                <th>年／月份</th>
                 <th><?= $year; ?>年 <?= $monthStr[$period]; ?></th>
                 <th>對獎</th>
             </tr>
@@ -89,27 +89,27 @@ $year = date("Y");
             </tr>
             <tr>
                 <td>二獎</td>
-                <td></td>
+                <td>同期統一發票收執聯末7 位數號碼與頭獎中獎號碼末7 位相同者各得獎金4萬元</td>
                 <td><a href="award.php?aw=4&year=<?= $year; ?>&period=<?= $period; ?>">對獎</a></td>
             </tr>
             <tr>
                 <td>三獎</td>
-                <td></td>
+                <td>同期統一發票收執聯末6 位數號碼與頭獎中獎號碼末6 位相同者各得獎金1萬元</td>
                 <td><a href="award.php?aw=5&year=<?= $year; ?>&period=<?= $period; ?>">對獎</a></td>
             </tr>
             <tr>
                 <td>四獎</td>
-                <td></td>
+                <td>同期統一發票收執聯末5 位數號碼與頭獎中獎號碼末5 位相同者各得獎金4千元</td>
                 <td><a href="award.php?aw=6&year=<?= $year; ?>&period=<?= $period; ?>">對獎</a></td>
             </tr>
             <tr>
                 <td>五獎</td>
-                <td></td>
+                <td>同期統一發票收執聯末4 位數號碼與頭獎中獎號碼末4 位相同者各得獎金1千元</td>
                 <td><a href="award.php?aw=7&year=<?= $year; ?>&period=<?= $period; ?>">對獎</a></td>
             </tr>
             <tr>
                 <td>六獎</td>
-                <td></td>
+                <td>期統一發票收執聯末3 位數號碼與 頭獎中獎號碼末3 位相同者各得獎金2百元</td>
                 <td><a href="award.php?aw=8&year=<?= $year; ?>&period=<?= $period; ?>">對獎</a></td>
             </tr>
             <tr>

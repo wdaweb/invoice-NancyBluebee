@@ -1,106 +1,83 @@
-<?php include_once "./com/base.php";
-$period=ceil(date("n")/2);
-
-$monthStr=[
-    '1'=>"1,2月",
-    '2'=>"3,4月",
-    '3'=>"5,6月",
-    '4'=>"7,8月",
-    '5'=>"9,10月",
-    '6'=>"11,12月",
-];
-
-if(isset($_GET['period'])){
-    $period=$_GET['period'];
-}
-$year=date("Y");
-?>   
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>統一發票管理系統</title>
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-<body>
-<?php include "./include/header.php";?>   
-<h1>期別</h1>
-<ul class="nav">
-<li><a href="invoice.php?period=1" style="background:<?=($period==1)?'lightgreen':'white';?>">1(1,2)</a></li>
-<li><a href="invoice.php?period=2" style="background:<?=($period==2)?'lightgreen':'white';?>">2(3,4)</a></li>
-<li><a href="invoice.php?period=3" style="background:<?=($period==3)?'lightgreen':'white';?>">3(5,6)</a></li>
-<li><a href="invoice.php?period=4" style="background:<?=($period==4)?'lightgreen':'white';?>">4(7,8)</a></li>
-<li><a href="invoice.php?period=5" style="background:<?=($period==5)?'lightgreen':'white';?>">5(9,10)</a></li>
-<li><a href="invoice.php?period=6" style="background:<?=($period==6)?'lightgreen':'white';?>">6(11,12)</a></li>
-</ul>
-<a href="add_invoice.php"><button>新增獎號</button></a>
 <?php
 
-$num1=find('award_number',['period'=>$period,'year'=>$year,'type'=>1]); //單筆
-$num2=find('award_number',['period'=>$period,'year'=>$year,'type'=>2]);//單筆
-$num3=all('award_number',['period'=>$period,'year'=>$year,'type'=>3]);//多筆
-$num4=all('award_number',['period'=>$period,'year'=>$year,'type'=>4]);//多筆
+include_once "com/base.php";
+
+
+echo "<pre>";
+print_r($_POST);
+echo "</pre>";
+
+/**
+ * 年分--year
+ * 期數--period
+ * 特別獎--num1
+ * 特獎--num2
+ * 頭獎--num3 有多筆
+ * 增開六獎--num4 有多筆 只有三碼
+ */
+
+$table="award_number";
+
+$year=$_POST['year'];
+$period=$_POST['period'];
+
+//儲存特別獎
+$num1=$_POST['num1'];
+$data=[
+    "year"=>$year,
+    "period"=>$period,
+    "number"=>$num1,
+    "type"=>1,  //自定義
+];
+
+save($table,$data);
+
+
+
+
+$num2=$_POST['num2'];
+
+ $data=[
+    "year"=>$year,
+    "period"=>$period,
+    "number"=>$num2,
+    "type"=>2,  //自定義
+ ];
+
+ save($table,$data);
+
+
+
+ $num3=$_POST['num3'];
+
+ foreach($num3 as $num){
+    $data=[
+        "year"=>$year,
+        "period"=>$period,
+        "number"=>$num,
+        "type"=>3,  //自定義 
+     ];
+     save($table,$data);
+ }
+
+ $num4=$_POST['num4'];
+
+ foreach($num4 as $num){
+    $data=[
+        "year"=>$year,
+        "period"=>$period,
+        "number"=>$num,
+        "type"=>4,  //自定義 
+     ];
+     save($table,$data);
+ }
+
+ to("invoice.php");
+
+
+
+
+
+
 
 ?>
-
-
-<table class="invoice-table">
-    <tr>
-        <td>年月份</td>
-        <td><?=$year;?>年 <?=$monthStr[$period];?></td>
-    </tr>
-    <tr>
-        <td>特別獎</td>
-        <td><?=$num1['number'];?></td>
-    </tr>
-    <tr>
-        <td>特獎</td>
-        <td><?=$num2['number'];?></td>
-    </tr>
-    <tr>
-        <td>頭獎</td>
-        <td>
-            <?php
-                foreach($num3 as $num){
-                    echo $num['number'] . "<br>";
-                }
-            
-            ?>
-
-        </td>
-    </tr>
-    <tr>
-        <td>二獎</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>三獎</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>四獎</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>五獎</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>六獎</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>增開六獎</td>
-        <td>
-        <?php
-                foreach($num4 as $num){
-                    echo $num['number'] . "<br>";
-                }
-            
-            ?>
-        </td>
-    </tr>
-</table>
-</body>
-</html>

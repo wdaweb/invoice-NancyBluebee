@@ -13,7 +13,7 @@
 <?php
 
 if(empty($_GET)){
-    echo "請選擇要對獎的項目<a href='invoice.php'>各期獎號</a>";
+    echo "<h3>請選擇要對獎的項目<a href='invoice.php'>各期獎號</a></h3>";
     exit();
 }
 
@@ -29,8 +29,8 @@ $award_type=[
     9=>["增開六獎",4,3],
 ];
 $aw=$_GET['aw'];
-echo "獎別:".$award_type[$aw][0]."<br>";
 echo "年份:".$_GET['year']."<br>";
+echo "獎別:".$award_type[$aw][0]."<br>";
 echo "期別:".$_GET['period']."<br>";
 
 $award_nums=nums("award_number",[

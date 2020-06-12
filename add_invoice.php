@@ -16,7 +16,7 @@
 <form action="save_number.php" method="post">
 <table class="invoice-table">
     <tr>
-        <td>年/月/份</td>
+        <td>年／月份</td>
         <td>
             <input type="number" name="year" id="">
             <select name="period">
