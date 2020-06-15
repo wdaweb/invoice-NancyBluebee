@@ -35,7 +35,7 @@
    
     <label for="number">獎號:</label>
     <input type="text" name="code"  maxlength="2" size="2">
-    <input type="number" name="number" maxlength="8" size="8"><br />
+    <input type="text" name="number" maxlength="8" size="8"><br />
 
     <label for="expend">花費:</label>
     <input type="number" name="expend">
@@ -131,7 +131,7 @@
 </tbody>
 </table>
 <hr>
-<p><a href="https://bluezz.com.tw/0102.php" target=_blank title="參考設計">發票設計參考</a></p>
+<p><a href="https://bluezz.com.tw/0102.php" target=_blank title="參考設計">發票系統設計功能參考</a></p>
 <p><a href="https://fontawesome.com" target=_blank title="在FontAwesome ">FontAwesome 免費的Font ICON圖示</a></p>
 </div>
 

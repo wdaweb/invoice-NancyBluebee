@@ -61,7 +61,7 @@ $year = date("Y");
                         echo $num1['number'];
                     };
 
-                    ?></td>
+                    ?><br>八位數號碼與上列號碼相同者獎金一千萬元</td>
                 <td><a href="award.php?aw=1&year=<?= $year; ?>&period=<?= $period; ?>">對獎</a></td>
             </tr>
             <tr>
@@ -71,7 +71,7 @@ $year = date("Y");
                         echo $num2['number'];
                     };
 
-                    ?></td>
+                    ?><br>八位數號碼與上列號碼相同者獎金二佰萬元</td>
                 <td><a href="award.php?aw=2&year=<?= $year; ?>&period=<?= $period; ?>">對獎</a></td>
             </tr>
             <tr>
@@ -82,7 +82,7 @@ $year = date("Y");
                         echo $num['number'] . "<br>";
                     }
 
-                    ?>
+                    ?>八位數號碼與上列號碼相同者獎金二十萬元
 
                 </td>
                 <td><a href="award.php?aw=3&year=<?= $year; ?>&period=<?= $period; ?>">對獎</a></td>

@@ -1,10 +1,10 @@
 <?php include_once "com/base.php";?>
 <!DOCTYPE html>
-<html lang="zh-tw">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>統一發票管理系統</title>
+    <title>統一發票管理系統：輸入獎號</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
@@ -18,7 +18,6 @@ if(empty($_GET)){
 }
 
 $award_type=[
-    //欄2為獎項-共4種;欄3代表相同數字碼，特別奬-特獎-頭獎需8碼全符合
     1=>["特別獎",1,8],
     2=>["特獎",2,8],
     3=>["頭獎",3,8],
@@ -30,9 +29,9 @@ $award_type=[
     9=>["增開六獎",4,3],
 ];
 $aw=$_GET['aw'];
-echo "<p>年份：".$_GET['year']."<br>";
-echo "獎別：".$award_type[$aw][0]."<br>";
-echo "期別：".$_GET['period']."</p><br>";
+echo "年份:".$_GET['year']."<br>";
+echo "獎別:".$award_type[$aw][0]."<br>";
+echo "期別:".$_GET['period']."<br>";
 
 $award_nums=nums("award_number",[
     "year"=>$_GET['year'],
@@ -40,7 +39,7 @@ $award_nums=nums("award_number",[
     "type"=>$award_type[$aw][1]
 ]);
 
-echo "獎號數量：".$award_nums;
+echo "獎號數量:".$award_nums;
 $award_numbers=all("award_number",[
     "year"=>$_GET['year'],
     "period"=>$_GET['period'],

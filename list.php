@@ -46,19 +46,24 @@ $rows=all('invoice',['period'=>$period]);
 <div class="container">
 <table>
     <tr>
-        <th width="20%">編　號</th>
-        <th width="20%">標　記</th>
-        <th width="30%">號　碼</th>
-        <th width="30%">花　費</th>
+        <th width="10%">編　號</th>
+        <th width="10%">標　記</th>
+        <th width="20%">號　碼</th>
+        <th width="20%">花　費</th>
+        <th width="20%">修　正</th>
+        <th width="20%">刪　除</th>
+
     </tr>
     <?php
     foreach($rows as $row){
     ?>
     <tr>
-        <td width="20%"><?=$row['id'];?></td>
-        <td width="20%"><?=$row['code'];?></td>
-        <td width="30%"><?=$row['number'];?></td>
-        <td width="30%">$ <?=$english_format_number = number_format($row['expend']);?></td>
+        <td width="10%"><?=$row['id'];?></td>
+        <td width="10%"><?=$row['code'];?></td>
+        <td width="20%"><?=$row['number'];?></td>
+        <td width="20%">$ <?=$english_format_number = number_format($row['expend']);?></td>
+        <td width="20%"><a href="modify.php?id= <?= $row['id'] ?> " class="btn btn-primary btn-sm active" role="button" aria-pressed="true">修正號碼</a>
+        <td width="20%"><a href="delete.php?id= <?= $row['id']; ?> " class="btn btn-secondary btn-sm active" role="button" aria-pressed="true">刪除號碼</a>
     </tr>
     <?php
     }
