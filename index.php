@@ -39,7 +39,8 @@
 
     <label for="expend">花費:</label>
     <input type="number" name="expend">
-    <input type="submit" value="儲存"><br />
+    <input type="submit" name="button2" value="儲存">
+    <input type="reset" name="button2" value="重新填寫"><br />
  </fieldset>   
 </form>
 <div style="text-align: left;">

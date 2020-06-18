@@ -1,4 +1,4 @@
-<?php include_once "./com/base.php";
+﻿<?php include_once "./com/base.php";
 $period = ceil(date("n") / 2);
 
 $monthStr = [
@@ -25,12 +25,13 @@ $year = date("Y");
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC|Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/fa483230ea.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <?php include "./include/header.php"; ?>
     <div class="container">
-        <h1>期別</h1>
+        <h1>　<i class="fas fa-award"></i>期別<i class="fas fa-award"></i></h1>
         <ul class="nav">
             <li><a href="invoice.php?period=1" style="background:<?= ($period == 1) ? 'lightgreen' : 'white'; ?>">1(1-2)</a></li>
             <li><a href="invoice.php?period=2" style="background:<?= ($period == 2) ? 'lightgreen' : 'white'; ?>">2(3-4)</a></li>
@@ -40,6 +41,8 @@ $year = date("Y");
             <li><a href="invoice.php?period=6" style="background:<?= ($period == 6) ? 'lightgreen' : 'white'; ?>">6(11-12)</a></li>
         </ul>
         <a href="add_invoice.php"><button class="button button2">新增獎號</button></a>
+        <a href="query.php"><button class="button button2">依期數查詢發票</button></a>
+        <a href="reward_acc.php"><button class="button button2">本期中獎筆數與累積獎金</button></a>
         <?php
 
         $num1 = find('award_number', ['period' => $period, 'year' => $year, 'type' => 1]); //單筆
@@ -56,33 +59,33 @@ $year = date("Y");
             </tr>
             <tr>
                 <td>特別獎</td>
-                <td><?php
+                <td><span style="color:red;"><?php
                     if (!empty($num1['number'])) {
                         echo $num1['number'];
                     };
 
-                    ?><br>八位數號碼與上列號碼相同者獎金一千萬元</td>
+                    ?></span><br>八位數號碼與上列號碼相同者獎金一千萬元</td>
                 <td><a href="award.php?aw=1&year=<?= $year; ?>&period=<?= $period; ?>">對獎</a></td>
             </tr>
             <tr>
                 <td>特獎</td>
-                <td><?php
+                <td><span style="color:red;"><?php
                     if (!empty($num2['number'])) {
                         echo $num2['number'];
                     };
 
-                    ?><br>八位數號碼與上列號碼相同者獎金二佰萬元</td>
+                    ?></span><br>八位數號碼與上列號碼相同者獎金二佰萬元</td>
                 <td><a href="award.php?aw=2&year=<?= $year; ?>&period=<?= $period; ?>">對獎</a></td>
             </tr>
             <tr>
                 <td>頭獎</td>
-                <td>
+                <td><span style="color:red;">
                     <?php
                     foreach ($num3 as $num) {
                         echo $num['number'] . "<br>";
                     }
 
-                    ?>八位數號碼與上列號碼相同者獎金二十萬元
+                    ?></span>八位數號碼與上列號碼相同者獎金二十萬元
 
                 </td>
                 <td><a href="award.php?aw=3&year=<?= $year; ?>&period=<?= $period; ?>">對獎</a></td>
@@ -114,13 +117,13 @@ $year = date("Y");
             </tr>
             <tr>
                 <td>增開六獎</td>
-                <td>
+                <td><span style="color:red;">
                     <?php
                     foreach ($num4 as $num) {
                         echo $num['number'] . "<br>";
                     }
 
-                    ?>
+                    ?></span>同期統一發票收執聯末3位數號碼與增開六獎號碼相同者各得獎金2百元
                 </td>
                 <td><a href="award.php?aw=9&year=<?= $year; ?>&period=<?= $period; ?>">對獎</a></td>
             </tr>
