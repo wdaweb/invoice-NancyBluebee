@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>統一發票管理系統</title>
-    <link rel="stylesheet" href="./css/style.css">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC|Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/fa483230ea.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <?php include "./include/header.php"    ;?>   
@@ -86,22 +89,36 @@ foreach ($invoices as $ins) {
         
         $start=8-$len;
         
-        //針對增開六獎號特別處理
-        if($aw!=9){
-            $target_num=mb_substr($tn,$start,$len);
-        }else{
-            $target_num=$tn;
-        }
-
-        if(mb_substr($ins['number'],$start,$len) == $target_num ){
-            echo "<span style='color:red;font-size:20px'>".$ins['number']."中獎了</span>";
-            echo "<br>";
-        }
-    }
-    
+ //針對增開六獎號特別處理
+ if($aw!=9){
+    $target_num=mb_substr($tn,$start,$len);
+}else{
+    $target_num=$tn;
 }
 
+if(mb_substr($ins['number'],$start,$len) == $target_num ){
+    $i=$i+1;
+    echo "<span style='color:red;font-size:20px'>".$ins['number']."中獎了</span>";
+    echo "<br>";
+    }
+}
+}   
+echo "共計中獎筆數：". $i ."<br>"; 
+// print_r($invoices);
 
+// foreach($invoices as $awd){
+//     print_r($awd);
+// }
+if($i>0){
+foreach($invoices as $awd){
+    if($awd['number']==$ins['number']){
+        foreach($awd as $row){
+            $sql="insert into `reward_record` (`period`,`year`,`code`,`number`,`expend`) values ('".$awd['period']."','".$awd['year']."','".strtoupper($awd['code'])."','".$awd['number']."','".$awd['expend']."')";
+            }
+        $res=$pdo->exec($sql);
+    }
+}     
+}
 ?>
 
 

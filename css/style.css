@@ -6,7 +6,7 @@
 body{
     	font-family:sans-serif , Arial, Arial Black, "微軟正黑體";
 	background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)),
-              	url("./img/paper-flower.jpg");
+        url("./img/logo.png");
   } 
 h1, h2, h3, h4 {
     color: white;
