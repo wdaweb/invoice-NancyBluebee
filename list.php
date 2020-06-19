@@ -48,7 +48,7 @@ $rows=all('invoice',['period'=>$period]);
 <table>
     <tr>
         <th width="10%">編　號</th>
-        <th width="10%">標　記</th>
+        <th width="10%">期　別</th>
         <th width="20%">號　碼</th>
         <th width="20%">花　費</th>
         <th width="20%">修　正</th>
@@ -60,7 +60,7 @@ $rows=all('invoice',['period'=>$period]);
     ?>
     <tr>
         <td width="10%"><?=$row['id'];?></td>
-        <td width="10%"><?=$row['code'];?></td>
+        <td width="10%"><?=$row['period'];?></td>
         <td width="20%"><?=$row['number'];?></td>
         <td width="20%">$ <?=$english_format_number = number_format($row['expend']);?></td>
         <td width="20%"><a href="modify.php?id= <?= $row['id'] ?> " class="btn btn-primary btn-sm active" role="button" aria-pressed="true">修正發票資料</a>

@@ -25,8 +25,8 @@ foreach ($sql->fetchAll() as $row) {
 	echo '<tr>';
 	echo '<td>', $row['year'], '</td>';
 	echo '<td>', $row['period'], '</td>';
-	echo '<td>', $row['code'], $row['number'],'</td>';
-	echo '<td>', $row['expend'], '</td>';
+	echo '<td>', $row['number'],'</td>';
+	echo '<td>', '$', $english_format_number = number_format($row['expend']), '</td>';
 	echo '</tr>';
 	echo "\n";
 }

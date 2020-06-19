@@ -14,7 +14,7 @@
 <?php include "./include/header.php"    ;?>  
 <div class="container">  
 <h2>請輸入發票期數：1-6期</h2>
-<form action="query_output.php" method="post">
+<form action="query_output.php" method="get">
 <input type="text" name="period">
 <input type="submit" value="搜尋">
 </form>
